@@ -168,54 +168,51 @@ final ParserVal dup_yyval(ParserVal val)
 //#### end semantic value section ####
 public final static short NUMBER=257;
 public final static short LINE=258;
-public final static short DIAG=259;
-public final static short CIRCULO=260;
-public final static short RECTANGULO=261;
-public final static short COLOR=262;
-public final static short PRINT=263;
-public final static short IMAGEN=264;
-public final static short FILTRO=265;
+public final static short CIRCULO=259;
+public final static short RECTANGULO=260;
+public final static short COLOR=261;
+public final static short PRINT=262;
+public final static short IMAGEN=263;
+public final static short FILTRO=264;
 public final static short YYERRCODE=256;
 final static short yylhs[] = {                           -1,
     0,    0,    0,    1,    1,    1,    1,    1,    1,    1,
-    1,
 };
 final static short yylen[] = {                            2,
-    0,    2,    3,    1,    5,    2,    5,    4,    2,    3,
-   10,
+    0,    2,    3,    1,    5,    5,    4,    2,    3,   10,
 };
 final static short yydefred[] = {                         1,
-    0,    4,    0,    0,    0,    0,    0,    0,    0,    2,
-    0,    6,    0,    0,    0,    9,    0,    0,    3,    0,
-    0,    0,   10,    0,    0,    8,    0,    0,    7,    5,
-    0,    0,    0,    0,    0,   11,
+    0,    4,    0,    0,    0,    0,    0,    0,    2,    0,
+    0,    0,    0,    8,    0,    0,    3,    0,    0,    0,
+    9,    0,    0,    7,    0,    0,    6,    5,    0,    0,
+    0,    0,    0,   10,
 };
 final static short yydgoto[] = {                          1,
-   11,
+   10,
 };
 final static short yysindex[] = {                         0,
-  -59,    0, -256, -255, -254, -253, -252, -251, -250,    0,
-  -51,    0, -248, -247, -246,    0, -245, -244,    0, -243,
- -242, -241,    0, -240, -239,    0, -238, -237,    0,    0,
- -236, -235, -234, -233, -232,    0,
+  -59,    0, -256, -255, -254, -253, -252, -251,    0,  -52,
+ -249, -248, -247,    0, -246, -245,    0, -244, -243, -242,
+    0, -241, -240,    0, -239, -238,    0,    0, -237, -236,
+ -235, -234, -233,    0,
 };
 final static short yyrindex[] = {                         0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,
 };
 final static short yygindex[] = {                         0,
     0,
 };
-final static int YYTABLESIZE=206;
+final static int YYTABLESIZE=205;
 static short yytable[];
 static { yytable();}
 static void yytable(){
-yytable = new short[]{                         10,
-   12,   13,   14,   15,   16,   17,   18,   19,   20,   21,
-   22,   23,   24,   25,   26,   27,   28,   29,   30,   31,
-   32,   33,   34,   35,   36,    0,    0,    0,    0,    0,
+yytable = new short[]{                          9,
+   11,   12,   13,   14,   15,   16,   17,   18,   19,   20,
+   21,   22,   23,   24,   25,   26,   27,   28,   29,   30,
+   31,   32,   33,   34,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -233,16 +230,16 @@ yytable = new short[]{                         10,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    2,    3,    4,
-    5,    6,    7,    0,    8,    9,
+    5,    6,    0,    7,    8,
 };
 }
 static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
 yycheck = new short[] {                         59,
-  257,  257,  257,  257,  257,  257,  257,   59,  257,  257,
+  257,  257,  257,  257,  257,  257,   59,  257,  257,  257,
   257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-  257,  257,  257,  257,  257,   -1,   -1,   -1,   -1,   -1,
+  257,  257,  257,  257,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
@@ -260,11 +257,11 @@ yycheck = new short[] {                         59,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,  257,  258,  259,
-  260,  261,  262,   -1,  264,  265,
+  260,  261,   -1,  263,  264,
 };
 }
 final static short YYFINAL=1;
-final static short YYMAXTOKEN=265;
+final static short YYMAXTOKEN=264;
 final static String yyname[] = {
 "end-of-file",null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
@@ -282,8 +279,8 @@ null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-null,null,null,null,"NUMBER","LINE","DIAG","CIRCULO","RECTANGULO","COLOR",
-"PRINT","IMAGEN","FILTRO",
+null,null,null,null,"NUMBER","LINE","CIRCULO","RECTANGULO","COLOR","PRINT",
+"IMAGEN","FILTRO",
 };
 final static String yyrule[] = {
 "$accept : list",
@@ -292,15 +289,14 @@ final static String yyrule[] = {
 "list : list inst ';'",
 "inst : NUMBER",
 "inst : RECTANGULO NUMBER NUMBER NUMBER NUMBER",
-"inst : LINE NUMBER",
-"inst : DIAG NUMBER NUMBER NUMBER NUMBER",
+"inst : LINE NUMBER NUMBER NUMBER NUMBER",
 "inst : CIRCULO NUMBER NUMBER NUMBER",
 "inst : COLOR NUMBER",
 "inst : IMAGEN NUMBER NUMBER",
 "inst : FILTRO NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER",
 };
 
-//#line 95 "forma.y"
+//#line 93 "forma.y"
 
 public BufferedImage leeImagen(String nombre){
    BufferedImage imagen;
@@ -394,7 +390,6 @@ Parser(int foo){
        e.printStackTrace();
   }
    tabla.put("line", new Simbolo(LINE, 0.0));
-   tabla.put("diag", new Simbolo(DIAG, 0.0));
    tabla.put("circulo", new Simbolo(CIRCULO, 0.0));
    tabla.put("rectangulo", new Simbolo(RECTANGULO, 0.0));
    tabla.put("color", new Simbolo(COLOR, 0.0));
@@ -414,7 +409,7 @@ Parser(int foo){
    jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);  
 }
 public static void main(String args[]){ new Parser(); }
-//#line 346 "Parser.java"
+//#line 341 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -594,11 +589,6 @@ case 5:
 break;
 case 6:
 //#line 34 "forma.y"
-{ maq.code("constpush");
-                maq.code(((Algo)val_peek(0).obj).simb); maq.code("line");}
-break;
-case 7:
-//#line 36 "forma.y"
 { 
                      maq.code("constpush");
                      maq.code(((Algo)val_peek(3).obj).simb); 
@@ -608,10 +598,10 @@ case 7:
                      maq.code(((Algo)val_peek(1).obj).simb); 
                      maq.code("constpush");
                      maq.code(((Algo)val_peek(0).obj).simb); 
-                     maq.code("diag");}
+                     maq.code("line");}
 break;
-case 8:
-//#line 46 "forma.y"
+case 7:
+//#line 44 "forma.y"
 { 
                      maq.code("constpush");
                      maq.code(((Algo)val_peek(2).obj).simb); 
@@ -621,13 +611,13 @@ case 8:
                      maq.code(((Algo)val_peek(0).obj).simb); 
                      maq.code("circulo");}
 break;
-case 9:
-//#line 54 "forma.y"
+case 8:
+//#line 52 "forma.y"
 { maq.code("constpush");
                 maq.code(((Algo)val_peek(0).obj).simb); maq.code("color");}
 break;
-case 10:
-//#line 56 "forma.y"
+case 9:
+//#line 54 "forma.y"
 {
               Simbolo s=new Simbolo();
               s.ponDibu(new Imagen(leeImagen("dalmata.jpg"), 
@@ -638,8 +628,8 @@ case 10:
               maq.code("draw");      
       }
 break;
-case 11:
-//#line 66 "forma.y"
+case 10:
+//#line 64 "forma.y"
 {  
                       maq.code("constpush");
                       maq.code(((Algo)val_peek(8).obj).simb);
@@ -669,7 +659,7 @@ case 11:
                       maq.code("filtro");
 }
 break;
-//#line 596 "Parser.java"
+//#line 586 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

@@ -10,7 +10,7 @@ import java.awt.image.*;
 import javax.swing.*;
 import java.lang.reflect.*;
 %}
-%token NUMBER LINE DIAG CIRCULO RECTANGULO COLOR PRINT IMAGEN FILTRO
+%token NUMBER LINE CIRCULO RECTANGULO COLOR PRINT IMAGEN FILTRO
 %start list
 %%
 list :
@@ -31,9 +31,7 @@ inst:  NUMBER  { ((Algo)$$.obj).inst=maq.code("constpush");
                      maq.code("constpush");
                      maq.code(((Algo)$5.obj).simb);
                      maq.code("rectangulo"); }
-      | LINE NUMBER  { maq.code("constpush");
-                maq.code(((Algo)$2.obj).simb); maq.code("line");}
-      | DIAG NUMBER NUMBER NUMBER NUMBER  { 
+      | LINE NUMBER NUMBER NUMBER NUMBER  { 
                      maq.code("constpush");
                      maq.code(((Algo)$2.obj).simb); 
                      maq.code("constpush");
@@ -42,7 +40,7 @@ inst:  NUMBER  { ((Algo)$$.obj).inst=maq.code("constpush");
                      maq.code(((Algo)$4.obj).simb); 
                      maq.code("constpush");
                      maq.code(((Algo)$5.obj).simb); 
-                     maq.code("diag");}                
+                     maq.code("line");}                
       | CIRCULO NUMBER NUMBER NUMBER { 
                      maq.code("constpush");
                      maq.code(((Algo)$2.obj).simb); 
@@ -185,7 +183,6 @@ Parser(int foo){
        e.printStackTrace();
   }
    tabla.put("line", new Simbolo(LINE, 0.0));
-   tabla.put("diag", new Simbolo(DIAG, 0.0));
    tabla.put("circulo", new Simbolo(CIRCULO, 0.0));
    tabla.put("rectangulo", new Simbolo(RECTANGULO, 0.0));
    tabla.put("color", new Simbolo(COLOR, 0.0));

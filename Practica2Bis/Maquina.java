@@ -86,26 +86,15 @@ class  Maquina {
          g.setColor(colors[(int)d1]);
       }
    }
+   
    public void line(){
-      double d1;
-      d1=((Double)pila.pop()).doubleValue();
-      if(g!=null){
-         (new Linea(x+150,150-y,
-		(int)(x+d1*Math.cos(Math.toRadians(angulo)))+150, 
-		150-(int)(y+d1*Math.sin(Math.toRadians(angulo)))) ).dibuja(g);
-      }
-      /*x=(int)(x+d1*Math.cos(Math.toRadians(angulo)));
-      y=(int)(y+d1*Math.sin(Math.toRadians(angulo)));
-      System.out.println("x="+x+" y="+y+" d1="+d1);*/
-   }
-   public void diag(){
       double d1;
       angulo = (int)((Double)pila.pop()).doubleValue();
       d1=((Double)pila.pop()).doubleValue();
       y = (int)((Double)pila.pop()).doubleValue();
       x = (int)((Double)pila.pop()).doubleValue();
       if(g!=null){
-         (new Diagonal(x,y,
+         (new Linea(x,y,
 		(int)(x+d1*Math.cos(Math.toRadians(angulo))), 
 		(int)(y-d1*Math.sin(Math.toRadians(angulo)))) ).dibuja(g);
       }
