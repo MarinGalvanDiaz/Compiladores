@@ -1483,7 +1483,7 @@ int yylex (){
 	      	return NUMBER;
     	}
 	if(isalpha(c)){
-		
+		NodoL *n;
                 Symbol *s;
 		char sbuf[200], *p=sbuf;
 		do {
@@ -1491,9 +1491,9 @@ int yylex (){
 		} while ((c=getchar())!=EOF && isalnum(c));
 		ungetc(c, stdin);
 		*p='\0';
-		if((s=lookup(sbuf))==(NodoL *)NULL)
-		    s=install(sbuf, INDEF, 0.0);
-                s=(Symbol*)(s->dato);
+		if((n=lookup(sbuf))==(NodoL *)NULL)
+		    n=install(sbuf, INDEF, 0.0);
+                s=(Symbol*)(n->dato);
 		yylval.sym=s;   
                 if(s->type == INDEF){
 			return VAR;
