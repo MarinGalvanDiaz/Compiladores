@@ -3,6 +3,8 @@
 
 extern double Log(), Log10(), Sqrt(), Exp(), integer();
 
+// Eliminar los wrappers duplicados ya que ahora manejamos las funciones directamente en hoc3.y
+
 static struct {
     char *name; 
     double cval;
@@ -30,16 +32,24 @@ static struct {
     "abs",  fabs,
     0,      0
 };
+// En init.c, comentar o eliminar la sección de vector_builtins
+// ya que ahora manejamos las funciones directamente en el parser
 
 void init() {
     int i;
     Symbol *s;
 
-    for (i = 0; consts[i].name; i++)
+    // Instalar constantes como VARIABLES escalares
+    for (i = 0; consts[i].name; i++) {
         install(consts[i].name, TYPE_VAR, consts[i].cval);
+    }
     
+    // Instalar funciones built-in escalares
     for (i = 0; builtins[i].name; i++) {
         s = (Symbol *)(install(builtins[i].name, TYPE_BLTIN, 0.0)->dato);
         s->u.ptr = builtins[i].func;
     }
+    
+    // NO instalar las funciones vectoriales aquí
+    // Se manejan directamente en el parser con tokens específicos
 }

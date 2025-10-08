@@ -12,14 +12,6 @@ NodoL *creaNodoL(void *dato, NodoL *sig){
     return nvo;
 }
 
-NodoL *find(NodoL *inicio, void *key, int (*igual)(void *, void *)){
-    NodoL *p;
-    for(p = inicio; p; p = p->sig)
-        if(!(*igual)(p->dato, key))
-            return p;
-    return NULL;
-}
-
 Symbol *creaSymbol(char *s, int t, double d){
     Symbol *sp = (Symbol *)malloc(sizeof(Symbol));
     if (sp == NULL) return NULL;
@@ -33,39 +25,45 @@ Symbol *creaSymbol(char *s, int t, double d){
     return sp;
 }
 
-int cmpSymbol(void *p1, void *p2){
-    Symbol *s1 = (Symbol*)p1;
-    Symbol *s2 = (Symbol*)p2;
-    return strcmp(s1->name, s2->name);
-}
-
 NodoL *lookup(char *s){
-    Symbol *temp = creaSymbol(s, TYPE_INDEF, 0.0);
-    if (temp == NULL) return NULL;
-    
-    NodoL *result = find(symlist, (void *)temp, cmpSymbol);
-    free(temp->name);
-    free(temp);
-    return result;
+    NodoL *p;
+    for(p = symlist; p; p = p->sig) {
+        Symbol *sym = (Symbol*)p->dato;
+        if(strcmp(sym->name, s) == 0)
+            return p;
+    }
+    return NULL;
 }
 
+// En symbol.c, modificar la función install para mejor manejo de tipos
 NodoL *install(char *s, int t, double d) {
-    // Primero verificar si ya existe
+    // Verificar si ya existe
     NodoL *existing = lookup(s);
     if (existing != NULL) {
         Symbol *sym = (Symbol *)existing->dato;
-        if (t == TYPE_VECTOR) {
-            sym->type = TYPE_VECTOR;
-            sym->u.vec = NULL;
-        } else {
+        // Permitir cambiar tipo excepto para BLTIN
+        if (sym->type != TYPE_BLTIN) {
             sym->type = t;
-            sym->u.val = d;
+            if (t == TYPE_VECTOR) {
+                // Para vectores, inicializar como NULL
+                sym->u.vec = NULL;
+            } else {
+                sym->u.val = d;
+            }
         }
         return existing;
     }
     
-    Symbol *sp = creaSymbol(s, t, d);
+    // Crear nuevo símbolo
+    Symbol *sp = (Symbol *)malloc(sizeof(Symbol));
     if (sp == NULL) return NULL;
+    sp->name = strdup(s);
+    sp->type = t;
+    if (t == TYPE_VECTOR) {
+        sp->u.vec = NULL;
+    } else {
+        sp->u.val = d;
+    }
     
     symlist = creaNodoL(sp, symlist);
     return symlist; 
