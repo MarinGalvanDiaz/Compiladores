@@ -58,7 +58,17 @@ extern int yydebug;
     VAR = 259,                     /* VAR  */
     BLTIN = 260,                   /* BLTIN  */
     INDEF = 261,                   /* INDEF  */
-    UNARYMINUS = 262               /* UNARYMINUS  */
+    VSUM = 262,                    /* VSUM  */
+    VMEAN = 263,                   /* VMEAN  */
+    VMIN = 264,                    /* VMIN  */
+    VMAX = 265,                    /* VMAX  */
+    VSIZE = 266,                   /* VSIZE  */
+    VDOT = 267,                    /* VDOT  */
+    VZEROS = 268,                  /* VZEROS  */
+    VONES = 269,                   /* VONES  */
+    VNORMALIZE = 270,              /* VNORMALIZE  */
+    VLINSPACE = 271,               /* VLINSPACE  */
+    UNARYMINUS = 272               /* UNARYMINUS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -67,13 +77,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 29 "hoc3.y"
+#line 41 "hoc3.y"
 
     double val;
     Symbol *sym;
     Vector *vec;
 
-#line 77 "hoc3.tab.h"
+#line 87 "hoc3.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
