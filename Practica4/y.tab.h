@@ -55,23 +55,10 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     NUMBER = 258,                  /* NUMBER  */
-    PRINT = 259,                   /* PRINT  */
-    VAR = 260,                     /* VAR  */
-    BLTIN = 261,                   /* BLTIN  */
-    INDEF = 262,                   /* INDEF  */
-    WHILE = 263,                   /* WHILE  */
-    IF = 264,                      /* IF  */
-    ELSE = 265,                    /* ELSE  */
-    OR = 266,                      /* OR  */
-    AND = 267,                     /* AND  */
-    GT = 268,                      /* GT  */
-    GE = 269,                      /* GE  */
-    LT = 270,                      /* LT  */
-    LE = 271,                      /* LE  */
-    EQ = 272,                      /* EQ  */
-    NE = 273,                      /* NE  */
-    UNARYMINUS = 274,              /* UNARYMINUS  */
-    NOT = 275                      /* NOT  */
+    VAR = 259,                     /* VAR  */
+    INDEF = 260,                   /* INDEF  */
+    VECT = 261,                    /* VECT  */
+    NUMB = 262                     /* NUMB  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -81,34 +68,23 @@ extern int yydebug;
 #define YYerror 256
 #define YYUNDEF 257
 #define NUMBER 258
-#define PRINT 259
-#define VAR 260
-#define BLTIN 261
-#define INDEF 262
-#define WHILE 263
-#define IF 264
-#define ELSE 265
-#define OR 266
-#define AND 267
-#define GT 268
-#define GE 269
-#define LT 270
-#define LE 271
-#define EQ 272
-#define NE 273
-#define UNARYMINUS 274
-#define NOT 275
+#define VAR 259
+#define INDEF 260
+#define VECT 261
+#define NUMB 262
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 12 "hoc5.y"
+#line 19 "vector.y"
 
-Symbol  *sym;   /* apuntador de la tabla de símbolos */ 
-Inst    *inst;  /* instrucción de máquina */
+	double num;
+	Vector *val;
+	Inst *inst;
+	Symbol *sym;
 
-#line 112 "y.tab.h"
+#line 88 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

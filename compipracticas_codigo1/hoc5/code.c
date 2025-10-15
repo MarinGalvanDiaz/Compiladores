@@ -4,11 +4,11 @@
 static  Datum  stack[NSTACK];  /* la pila */
 static  Datum   *stackp;       /* siguiente lugar libre en la pila */
 #define NPROG   2000
-Inst    prog[NPROG];    /* la máquina */
-Inst    *progp;         /* siguiente lugar libre para la generación de código */
-Inst    *pc;	/* contador de programa durante la ejecución */
+Inst    prog[NPROG];    /* la mï¿½quina */
+Inst    *progp;         /* siguiente lugar libre para la generaciï¿½n de cï¿½digo */
+Inst    *pc;	/* contador de programa durante la ejecuciï¿½n */
 
-void initcode()      /* inicialización para la generación de código */ {
+void initcode()      /* inicializaciï¿½n para la generaciï¿½n de cï¿½digo */ {
    stackp = stack;
    progp = prog;
 }
@@ -49,33 +49,33 @@ push(d);
 
 void whilecode() {
    Datum d;
-   Inst  *savepc  = pc;	/*  cuerpo de la iteración  */
-   execute(savepc+2);     /*   condición   */ 
+   Inst  *savepc  = pc;	/*  cuerpo de la iteraciï¿½n  */
+   execute(savepc+2);     /*   condiciï¿½n   */ 
    d  =  pop(); 
    while   (d.val)   {
       execute(*((Inst  **)(savepc)));     /*  cuerpo  */
       execute(savepc+2);
       d  = pop(); 
    } 
-   pc  =  *((Inst  **)(savepc+1));     /*   siguiente proposición   */
+   pc  =  *((Inst  **)(savepc+1));     /*   siguiente proposiciï¿½n   */
 }
 void ifcode(){
    Datum d;
    Inst  *savepc  = pc;	/* parte then */
-   execute(savepc+3);	/*  condición   */
+   execute(savepc+3);	/*  condiciï¿½n   */
    d  =  pop(); 
    if (d.val)
       execute(*((Inst   **)(savepc))); 
-   else  if   (*((Inst  **)(savepc+1)))   /*  ¿parte else?   */
+   else  if   (*((Inst  **)(savepc+1)))   /*  ï¿½parte else?   */
       execute(*(( Inst  **) (savepc+1)));
-   pc  =  *((Inst  **)(savepc+2));	/*  siguiente proposición   */ 
+   pc  =  *((Inst  **)(savepc+2));	/*  siguiente proposiciï¿½n   */ 
 }
 
 void eval( )	/*  evaluar una variable en la pila   */
 {
 Datum  d;
 d   =  pop();
-if   (d.sym->type   ==   UNDEF)
+if   (d.sym->type   ==   INDEF)
 execerror("undefined variable",   
 d.sym->name); 
 d.val   =  d.sym->u.val; push(d);
@@ -131,7 +131,7 @@ void assign( )        /* asignar el valor superior al siguientevalor */
 Datum d1, d2;
 d1 = pop();
 d2 = pop();
-if (d1.sym->type != VAR && d1.sym->type != UNDEF) 
+if (d1.sym->type != VAR && d1.sym->type != INDEF) 
 execerror("assignment to non-variable", d1.sym->name);
 d1.sym->u.val = d2.val;
 d1.sym->type = VAR;
@@ -155,7 +155,7 @@ d  =  pop();
 d.val  =   (*(double   (*)(double))(*pc++))(d.val);
 push(d);
 }
-Inst *code(Inst f){ /*   instalar una instrucción u operando   */
+Inst *code(Inst f){ /*   instalar una instrucciï¿½n u operando   */
    //puts("code1");
    Inst *oprogp = progp;
    if (progp > &prog [ NPROG -1 ])
@@ -163,7 +163,7 @@ Inst *code(Inst f){ /*   instalar una instrucción u operando   */
    *progp++ = f;
    return oprogp;
 }
-void execute(Inst *p){	/*   ejecución con la máquina   */
+void execute(Inst *p){	/*   ejecuciï¿½n con la mï¿½quina   */
 for  (pc  =  p;   *pc != STOP; ) 
 	(*pc++)();
 }

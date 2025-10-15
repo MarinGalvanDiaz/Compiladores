@@ -20,7 +20,7 @@ Symbol *creaSymbol(char *s, int t, double d){
     if (t == TYPE_VECTOR) {
         sp->u.vec = NULL;
     } else {
-        sp->u.val = d;
+        sp->u.ptr = NULL;
     }
     return sp;
 }
@@ -35,35 +35,18 @@ NodoL *lookup(char *s){
     return NULL;
 }
 
-// En symbol.c, modificar la función install para mejor manejo de tipos
 NodoL *install(char *s, int t, double d) {
     // Verificar si ya existe
     NodoL *existing = lookup(s);
     if (existing != NULL) {
         Symbol *sym = (Symbol *)existing->dato;
-        // Permitir cambiar tipo excepto para BLTIN
-        if (sym->type != TYPE_BLTIN) {
-            sym->type = t;
-            if (t == TYPE_VECTOR) {
-                // Para vectores, inicializar como NULL
-                sym->u.vec = NULL;
-            } else {
-                sym->u.val = d;
-            }
-        }
+        sym->type = t;
         return existing;
     }
     
     // Crear nuevo símbolo
-    Symbol *sp = (Symbol *)malloc(sizeof(Symbol));
+    Symbol *sp = creaSymbol(s, t, d);
     if (sp == NULL) return NULL;
-    sp->name = strdup(s);
-    sp->type = t;
-    if (t == TYPE_VECTOR) {
-        sp->u.vec = NULL;
-    } else {
-        sp->u.val = d;
-    }
     
     symlist = creaNodoL(sp, symlist);
     return symlist; 

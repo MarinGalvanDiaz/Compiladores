@@ -1,9 +1,8 @@
 #include "hoc.h"
 #include <math.h>
 
-extern double Log(), Log10(), Sqrt(), Exp(), integer();
-
-// Eliminar los wrappers duplicados ya que ahora manejamos las funciones directamente en hoc3.y
+// Wrappers dummy para funciones builtin (no se usan directamente)
+double builtin_dummy() { return 0.0; }
 
 static struct {
     char *name; 
@@ -11,45 +10,38 @@ static struct {
 } consts[] = {
     "PI",    3.14159265358979323846,
     "E",     2.71828182845904523536,
-    "GAMMA", 0.57721566490153286060,
-    "DEG",  57.29577951308232087680,
-    "PHI",   1.61803398874989484820,
     0,       0
 };
 
+// Las 5 funciones vectoriales básicas
 static struct {
     char *name;
-    double (*func)(double);
-} builtins[] = {
-    "sin",  sin,
-    "cos",  cos,
-    "atan", atan,
-    "log",  Log,
-    "log10", Log10,
-    "exp",  Exp,
-    "sqrt", Sqrt,
-    "int",  integer,
-    "abs",  fabs,
-    0,      0
+} vector_builtins[] = {
+    "sum",      // suma de vectores
+    "sub",      // resta de vectores  
+    "dot",      // producto punto
+    "cross",    // producto cruz
+    "mag",      // magnitud
+    "norm",     // normalizar
+    0
 };
-// En init.c, comentar o eliminar la sección de vector_builtins
-// ya que ahora manejamos las funciones directamente en el parser
 
 void init() {
     int i;
     Symbol *s;
 
-    // Instalar constantes como VARIABLES escalares
+    // Instalar constantes como vectores de 1 elemento
     for (i = 0; consts[i].name; i++) {
-        install(consts[i].name, TYPE_VAR, consts[i].cval);
+        NodoL *n = install(consts[i].name, TYPE_VECTOR, 0.0);
+        Symbol *sym = (Symbol *)(n->dato);
+        sym->u.vec = create_vector(1);
+        sym->u.vec->data[0] = consts[i].cval;
+        sym->u.vec->size = 1;
     }
     
-    // Instalar funciones built-in escalares
-    for (i = 0; builtins[i].name; i++) {
-        s = (Symbol *)(install(builtins[i].name, TYPE_BLTIN, 0.0)->dato);
-        s->u.ptr = builtins[i].func;
+    // Instalar funciones vectoriales como BLTIN
+    for (i = 0; vector_builtins[i].name; i++) {
+        s = (Symbol *)(install(vector_builtins[i].name, TYPE_BLTIN, 0.0)->dato);
+        s->u.ptr = builtin_dummy;  // No se usa directamente
     }
-    
-    // NO instalar las funciones vectoriales aquí
-    // Se manejan directamente en el parser con tokens específicos
 }

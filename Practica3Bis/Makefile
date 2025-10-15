@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g
-OBJS = hoc3.tab.o init.o symbol.o math.o vector.o
+OBJS = hoc3.tab.o init.o symbol.o vector.o
 
 hoc3: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o hoc3 -lm
@@ -14,9 +14,6 @@ init.o: init.c hoc.h
 
 symbol.o: symbol.c hoc.h
 	$(CC) $(CFLAGS) -c symbol.c
-
-math.o: math.c hoc.h
-	$(CC) $(CFLAGS) -c math.c
 
 vector.o: vector.c hoc.h
 	$(CC) $(CFLAGS) -c vector.c

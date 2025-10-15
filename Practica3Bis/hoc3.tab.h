@@ -54,21 +54,9 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    NUMBER = 258,                  /* NUMBER  */
-    VAR = 259,                     /* VAR  */
-    BLTIN = 260,                   /* BLTIN  */
-    INDEF = 261,                   /* INDEF  */
-    VSUM = 262,                    /* VSUM  */
-    VMEAN = 263,                   /* VMEAN  */
-    VMIN = 264,                    /* VMIN  */
-    VMAX = 265,                    /* VMAX  */
-    VSIZE = 266,                   /* VSIZE  */
-    VDOT = 267,                    /* VDOT  */
-    VZEROS = 268,                  /* VZEROS  */
-    VONES = 269,                   /* VONES  */
-    VNORMALIZE = 270,              /* VNORMALIZE  */
-    VLINSPACE = 271,               /* VLINSPACE  */
-    UNARYMINUS = 272               /* UNARYMINUS  */
+    VAR = 258,                     /* VAR  */
+    BLTIN = 259,                   /* BLTIN  */
+    NUMBER = 260                   /* NUMBER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -77,13 +65,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 41 "hoc3.y"
+#line 31 "hoc3.y"
 
     double val;
-    Symbol *sym;
     Vector *vec;
+    Symbol *sym;
 
-#line 87 "hoc3.tab.h"
+#line 75 "hoc3.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

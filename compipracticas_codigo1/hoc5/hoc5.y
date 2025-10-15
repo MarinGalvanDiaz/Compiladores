@@ -10,8 +10,8 @@ void execerror(char *s, char *t);
 void fpecatch(int e);
 %}
 %union   {
-Symbol  *sym;   /* apuntador de la tabla de símbolos */ 
-Inst    *inst;  /* instrucción de máquina */
+Symbol  *sym;   /* apuntador de la tabla de sï¿½mbolos */ 
+Inst    *inst;  /* instrucciï¿½n de mï¿½quina */
 }
 %token  <sym>   NUMBER PRINT VAR BLTIN INDEF WHILE IF ELSE 
 %type   <inst>  stmt asgn expr stmtlist cond while if end
@@ -38,19 +38,19 @@ asgn:     VAR '=' expr  { $$=$3; code3(varpush,(Inst)$1,assign); }
          ;
 stmt:     expr   { code(pop1); }
 	| PRINT expr    { code(prexpr); $$ = $2;} 
-            $1   $2   $3   $4
+            
 	| while cond stmt end {
-		($1)[1] = (Inst)$3;     /* cuerpo de la iteración */ 
-		($1)[2] = (Inst)$4; }   /* terminar si la condición no se cumple */
+		($1)[1] = (Inst)$3;     /* cuerpo de la iteraciï¿½n */ 
+		($1)[2] = (Inst)$4; }   /* terminar si la condiciï¿½n no se cumple */
    
-	| if cond stmt end {    /* proposición if que no emplea else */ 
+	| if cond stmt end {    /* proposiciï¿½n if que no emplea else */ 
 		($1)[1] = (Inst)$3;     /* parte then */ 
-		($1)[3] = (Inst)$4; }   /* terminar si la condición no se cumple */ 
+		($1)[3] = (Inst)$4; }   /* terminar si la condiciï¿½n no se cumple */ 
        
-	| if cond stmt end ELSE stmt end {  /* proposición if con parte else */
+	| if cond stmt end ELSE stmt end {  /* proposiciï¿½n if con parte else */
 		($1)[1]   =   (Inst)$3;	/*  parte then  */
 		($1)[2]   =   (Inst)$6;	/* parte else   */
-		($1)[3]   =   (Inst)$7;   } /*   terminar si la condición no se cumple  */
+		($1)[3]   =   (Inst)$7;   } /*   terminar si la condiciï¿½n no se cumple  */
 	|   '{'   stmtlist   '}' {   $$  =  $2;   }
         ;
 cond:	'('   expr   ')'      {   code(STOP);  $$  =  $2;   }
@@ -117,7 +117,7 @@ while  ((c=getchar()) ==  ' ' ||  c ==   '\t')
           ;
 if (c == EOF)
 	return 0; 
-if (c == '.' || isdigit(c)) {   /* número */
+if (c == '.' || isdigit(c)) {   /* nï¿½mero */
 	double d;
 	ungetc(c, stdin); 
 	scanf("%lf", &d);
@@ -161,7 +161,7 @@ int follow(int expect,   int ifyes,   int ifno)  { /*   buscar  >=, etc.   */
    return  ifno;
 }
 
-void yyerror(char *s)      /* comunicar errores de tiempo de compilación */
+void yyerror(char *s)      /* comunicar errores de tiempo de compilaciï¿½n */
 {
 warning(s, (char *)0); 
 } 
