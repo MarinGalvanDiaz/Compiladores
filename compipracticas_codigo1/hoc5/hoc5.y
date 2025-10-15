@@ -137,9 +137,9 @@ if (isalpha(c)) {
 	ungetc(c, stdin); 
 	*p = '\0'; 
 	if ((s=lookup(sbuf)) == 0)
-       		s=install(sbuf, UNDEF, 0.0); 
+       		s=install(sbuf, INDEF, 0.0); 
 	yylval.sym = s;
-	return s->type == UNDEF ? VAR : s->type;
+	return s->type == INDEF ? VAR : s->type;
 }
 	switch (c) {
 	case '>':                return follow('=', GE, GT);

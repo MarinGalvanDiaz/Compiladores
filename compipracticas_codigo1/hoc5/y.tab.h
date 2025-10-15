@@ -105,8 +105,8 @@ union YYSTYPE
 {
 #line 12 "hoc5.y"
 
-Symbol  *sym;   /* apuntador de la tabla de símbolos */ 
-Inst    *inst;  /* instrucción de máquina */
+Symbol  *sym;   /* apuntador de la tabla de s�mbolos */ 
+Inst    *inst;  /* instrucci�n de m�quina */
 
 #line 112 "y.tab.h"
 
