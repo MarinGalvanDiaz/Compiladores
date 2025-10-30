@@ -1,0 +1,7 @@
+complex = 1 + i
+iterador = 1
+while (iterador< 9) {
+complex = complex * (1 + i)
+iterador = iterador + 1
+}
+print complex
